@@ -1,5 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import './App.css';
 import CustomDay from './Calendar'
@@ -17,11 +18,11 @@ class SelectionMenu extends React.Component{
 
     render(){
         return (
-            <Grid container spacing={2} columns={2}>
-                <Grid item xs={1}>
+            <Grid container spacing={2} columns={10}>
+                <Grid item xs={4}>
                     <Grid container spacing={2} columns={1}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <Grid item xs={1} sx={{marginTop: 4, marginLeft:4 }}>
+                            <Grid item xs={1} sx={{marginTop: 4, marginLeft:4, marginRight:0 }}>
                                 <DateField
                                     label="Start Date"
                                     value={this.state.value}
@@ -29,7 +30,7 @@ class SelectionMenu extends React.Component{
                                     format="DD-MM-YYYY"
                                 />
                             </Grid>
-                            <Grid item xs={1} sx={{marginTop: 2, marginLeft:4 }}>
+                            <Grid item xs={1} sx={{marginTop: 2, marginLeft:4, marginRight:0 }}>
                                 <DateField
                                     label="End Date"
                                     value={this.state.value}
@@ -40,10 +41,11 @@ class SelectionMenu extends React.Component{
                         </LocalizationProvider>
                     </Grid>
                 </Grid>
-                <Grid item xs={1}>
+                <Grid item xs={6} sx={{marginTop: 2, marginLeft:0 }}>
                     <CustomDay/>
                 </Grid>
-            </Grid>
+                <Divider></Divider>
+            </Grid>  
         );
     }
 
