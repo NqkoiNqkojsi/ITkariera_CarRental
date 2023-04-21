@@ -14,11 +14,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApiDbContext>(options => options.UseSqlite(
     builder.Configuration.GetConnectionString("localDb")));
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 
 builder.Services.AddIdentity<ApiUser, IdentityRole>(u => u.User.RequireUniqueEmail=true)
         .AddEntityFrameworkStores<ApiDbContext>()
-        .AddDefaultTokenProviders();
+        .AddDefaultTokenProviders()
+        .AddRoles<IdentityRole>();
 
 
 var app = builder.Build();

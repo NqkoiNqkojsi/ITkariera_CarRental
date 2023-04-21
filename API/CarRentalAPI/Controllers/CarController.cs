@@ -16,6 +16,7 @@ namespace CarRentalAPI.Controllers
         }
 
         [HttpPost]
+        [Route("CreateEdit")]
         public JsonResult CreateEdit(Car car)
         {
             if (car.Id == 0)
@@ -32,6 +33,7 @@ namespace CarRentalAPI.Controllers
         }
 
         [HttpGet]
+        [Route("GetByID")]
         public JsonResult GetById(int id)
         {
             var car = _context.Cars.Find(id);
@@ -43,6 +45,7 @@ namespace CarRentalAPI.Controllers
         }
 
         [HttpGet]
+        [Route("GetAll")]
         public JsonResult GetAll()
         {
             var cars = from c in _context.Cars select c;
