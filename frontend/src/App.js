@@ -19,12 +19,12 @@ class App extends React.Component{
     return (
       <Stack 
       direction="row"
-      divider={<Divider orientation="vertical" flexItem />}
-      spacing={0}>
-        <Box sx={{height:'100%', display:'block', width:550,}}>
+      spacing={0}
+      sx={{height:'100%', overflow:'hidden'}}>
+        <Box sx={{height:'100%', display:'block', width:550, overflow:'scroll', boxSizing:'border-box'}}>
           <SelectionMenu/>
         </Box>
-        <Box sx={{height:'100%', display:'block', background:grey}}>
+        <Box sx={{height:'100%', boxSizing:'border-box', width:'calc(100% - 550px)', position:'relative', borderRadius:'10px', marginLeft:1, backgroundColor:'grey'}}>
           <Typography>Test test</Typography>
         </Box>
       </Stack>

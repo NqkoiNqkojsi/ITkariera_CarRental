@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import './App.css';
-import CustomDateCalendar from './Calendar'
+import CustomDay from './Calendar'
 import CarCard from './CarCard'
 import { DateField } from '@mui/x-date-pickers/DateField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -54,18 +54,14 @@ class SelectionMenu extends React.Component{
                     </Grid>
                 </Grid>
                 <Grid item xs={7} sx={{marginTop: 2, marginLeft:0 }}>
-                    <CustomDateCalendar/>
+                    <CustomDay value1={this.state.value1} value2={this.state.value2}/>
                 </Grid>
-                <Divider></Divider>
-                <Grid item xs={10}>
-                    <CarCard></CarCard>
-                </Grid>
-                <Grid item xs={10}>
-                    <CarCard></CarCard>
-                </Grid>
-                <Grid item xs={10}>
-                    <CarCard></CarCard>
-                </Grid>
+                <Divider orientation="horizontal" variant="middle"/>
+                {[0,0,0,0,0].map(() => 
+                    <Grid item xs={10}>
+                        <CarCard></CarCard>
+                    </Grid>)
+                }
             </Grid>  
         );
     }
