@@ -30,13 +30,14 @@ class SelectionMenu extends React.Component{
     }
 
     SecondPart(){
+        console.log(this.state.isSelectedCar);
         if(this.state.isSelectedCar){
-            return(<InfoMenu close={this.closeObject()} id={this.state.carId}></InfoMenu>);
+            return(<InfoMenu close={()=>this.closeObject()} id={this.state.carId} days={this.state.daysCount}></InfoMenu>);
         }else{
             return(
                 [0,1,2,3,4].map((x) => 
                     <Grid item xs={10}>
-                        <div onClick={this.openObject(x)} className='glow cardCar'>
+                        <div onClick={() => this.openObject(x)} className='glow cardCar'>
                             <CarCard id={x}></CarCard>
                         </div>
                     </Grid>
@@ -89,7 +90,7 @@ class SelectionMenu extends React.Component{
     }
 
     handleChange1(e) {
-        this.setState({ daysCount:Math.abs(e.diff(this.state.value2, 'days'))});
+        this.setState({ daysCount:Math.abs(e.diff(this.state.value2, 'days'))+1});
         this.setState({ value1: e.toDate() });
         if(e.isAfter(this.state.value2)){
             
@@ -99,7 +100,7 @@ class SelectionMenu extends React.Component{
     }
 
     handleChange2(e) {
-        this.setState({ daysCount:Math.abs(e.diff(this.state.value1, 'days'))});
+        this.setState({ daysCount:Math.abs(e.diff(this.state.value1, 'days'))+1});
         this.setState({ value2: e.toDate() });
         if(e.isBefore(this.state.value1)){
 
