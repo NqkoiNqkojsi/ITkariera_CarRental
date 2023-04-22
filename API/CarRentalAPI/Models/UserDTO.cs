@@ -21,5 +21,6 @@ namespace CarRentalAPI.Models
         
         public string UCN { get; set; }
 
+
     }
 }

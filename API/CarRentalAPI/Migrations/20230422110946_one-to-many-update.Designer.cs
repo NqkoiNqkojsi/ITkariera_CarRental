@@ -3,6 +3,7 @@ using System;
 using CarRentalAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRentalAPI.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230422110946_one-to-many-update")]
+    partial class onetomanyupdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -107,10 +110,6 @@ namespace CarRentalAPI.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ImgDir")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -140,7 +139,7 @@ namespace CarRentalAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CarID")
+                    b.Property<int>("CarId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("From")
@@ -149,15 +148,17 @@ namespace CarRentalAPI.Migrations
                     b.Property<DateTime>("To")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserID")
+                    b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CarID");
+                    b.HasIndex("CarId");
 
-                    b.ToTable("Queries");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Taken");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -188,15 +189,15 @@ namespace CarRentalAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e9cdecd5-9f48-44fe-b04f-b57b74f14c6f",
-                            ConcurrencyStamp = "9476d126-a092-4f52-aebe-46256da299c0",
+                            Id = "0f14a468-3def-4f4d-ae37-33c20415c394",
+                            ConcurrencyStamp = "782575bf-6de6-4b09-b329-73c0d8a9a456",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "fbc0c8d0-a3e1-4dd0-9fa0-c9ff5a100e29",
-                            ConcurrencyStamp = "a55e3b91-7a64-4617-91d9-3bb319a5b534",
+                            Id = "69223e4d-2669-4432-9675-40ece033ccf4",
+                            ConcurrencyStamp = "47946738-28e5-4421-ad1b-bbd4e5d7bdbd",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -306,11 +307,21 @@ namespace CarRentalAPI.Migrations
 
             modelBuilder.Entity("CarRentalAPI.Models.Taken", b =>
                 {
-                    b.HasOne("CarRentalAPI.Models.Car", null)
+                    b.HasOne("CarRentalAPI.Models.Car", "Car")
                         .WithMany("Taken")
-                        .HasForeignKey("CarID")
+                        .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("CarRentalAPI.Models.ApiUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

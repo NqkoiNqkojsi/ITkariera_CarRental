@@ -3,6 +3,7 @@ using System;
 using CarRentalAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRentalAPI.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230422101719_car2")]
+    partial class car2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -107,10 +110,6 @@ namespace CarRentalAPI.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ImgDir")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -122,14 +121,15 @@ namespace CarRentalAPI.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("TakenId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Year")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TakenId");
 
                     b.ToTable("Cars");
                 });
@@ -140,24 +140,15 @@ namespace CarRentalAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CarID")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("From")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("To")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserID")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("CarID");
-
-                    b.ToTable("Queries");
+                    b.ToTable("Taken");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -188,15 +179,15 @@ namespace CarRentalAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e9cdecd5-9f48-44fe-b04f-b57b74f14c6f",
-                            ConcurrencyStamp = "9476d126-a092-4f52-aebe-46256da299c0",
+                            Id = "bc3851a8-507c-4447-9a23-e28b08aa500a",
+                            ConcurrencyStamp = "4e1cc58e-8494-4381-825d-25db52873917",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "fbc0c8d0-a3e1-4dd0-9fa0-c9ff5a100e29",
-                            ConcurrencyStamp = "a55e3b91-7a64-4617-91d9-3bb319a5b534",
+                            Id = "9379ee54-2c63-47b4-819b-0c54587244ef",
+                            ConcurrencyStamp = "af677ff4-9ffb-4d25-b068-fc932a660c2b",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -304,13 +295,13 @@ namespace CarRentalAPI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CarRentalAPI.Models.Taken", b =>
+            modelBuilder.Entity("CarRentalAPI.Models.Car", b =>
                 {
-                    b.HasOne("CarRentalAPI.Models.Car", null)
-                        .WithMany("Taken")
-                        .HasForeignKey("CarID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("CarRentalAPI.Models.Taken", "Taken")
+                        .WithMany("Cars")
+                        .HasForeignKey("TakenId");
+
+                    b.Navigation("Taken");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -364,9 +355,9 @@ namespace CarRentalAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CarRentalAPI.Models.Car", b =>
+            modelBuilder.Entity("CarRentalAPI.Models.Taken", b =>
                 {
-                    b.Navigation("Taken");
+                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }

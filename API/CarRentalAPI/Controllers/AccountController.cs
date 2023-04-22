@@ -48,7 +48,6 @@ namespace CarRentalAPI.Controllers
                 user.lastName = userDTO.lastName;
                 user.UCN = userDTO.UCN;
 
-
                 var result = await _userManager.CreateAsync(user,userDTO.Password);
                 if (!result.Succeeded)
                 {
@@ -58,6 +57,7 @@ namespace CarRentalAPI.Controllers
                     }
                     return BadRequest(ModelState);
                 }
+                await _userManager.AddToRoleAsync(user, "User");
                 return Accepted();
 
             }
