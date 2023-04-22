@@ -13,6 +13,10 @@ import CardContent from '@mui/material/CardContent';
 import { flexbox } from '@mui/system';
 import { Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
+import ResponsiveAppBar from './Menu';
+import Home from './Home';
+import Profile from './Profile';
+import Content from './Content';
 
 class App extends React.Component{
   constructor(props) {
@@ -20,37 +24,11 @@ class App extends React.Component{
     this.state = { dir:"", isActive:false};
   }
 
-
-  updateDir(dir){
-    this.setState({ dir:dir });
-    this.setState({isActive:true});
-  }
-
-  GetCanvas(){
-    if(this.state.isActive){
-      return(
-        <Typography>Test Test</Typography>
-      );
-    }else{
-      return(
-        //<Scene dir={this.state.dir}></Scene>
-        <Typography>Test Test</Typography>
-      );
-    }
-  }
-
   render(){
     return (
-      <Stack 
-      direction="row"
-      spacing={0}
-      sx={{height:'100%', overflow:'hidden'}}>
-        <Box sx={{height:'100%', display:'block', width:550, overflow:'scroll', boxSizing:'border-box'}}>
-          <SelectionMenu getDir={(x)=>this.updateDir(x)}/>
-        </Box>
-        <Box sx={{height:'100%', boxSizing:'border-box', width:'calc(100% - 550px)', position:'relative', borderRadius:'10px', marginLeft:1, backgroundColor:'grey'}}>
-          {this.GetCanvas()}
-        </Box>
+      <Stack spacing={0} sx={{height:'100%'}}>
+        <ResponsiveAppBar sx={{height:'5%'}}></ResponsiveAppBar>
+        <Content sx={{height:'95'}}></Content>
       </Stack>
         
     );

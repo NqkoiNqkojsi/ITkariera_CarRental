@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import ResponsiveAppBar from './Menu';
+
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ResponsiveAppBar sx={{height:'5%'}}/>
-    <App sx={{height:'95%'}}/>
+    <App sx={{height:'100%'}}/>
   </React.StrictMode>
 );
 

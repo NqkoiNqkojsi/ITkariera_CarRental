@@ -16,31 +16,30 @@ class InfoMenu extends React.Component{
     constructor(props) {
         super(props);
         this.state = { brand: "Toyota", model:"Supra Mk4", type:"Sports Car", year:"1999", space:"5",price: 52.99, dir:"/models/toyota_supra_mk4__supra_1997__free_download/"};
-        this.props.getDir(this.state.dir);
     }
 
     render(){
         return (
             <figure className="product-card">
                 <div className='containerImg'>
-                    <img className="product-card-img" src={this.state.dir+"thumbnail.jpg"} alt={this.state.model}/>
+                    <img className="product-card-img" src={"/models/"+this.props.car.imgDir+"/thumbnail.jpg"} alt={this.props.car.model}/>
                     <button onClick={()=>this.props.close()} className="previous round">&#8249;</button>
                 </div>
                 <figcaption>
-                    <h1 className="product-card-title">{this.state.brand} {this.state.model}</h1>
+                    <h1 className="product-card-title">{this.props.car.brand} {this.props.car.model}</h1>
                     <Grid container spacing={2} columns={10}>
                         <Grid item xs={5}>
-                            <h3>Year: {this.state.year}</h3>
+                            <h3>Year: {this.props.car.year}</h3>
                             <h3 className="product-card-address">
-                                Space: {this.state.space}
+                                Space: {this.props.car.numberOfSeats}
                             </h3>
                             <button className="ghost glow" id="Rent">Rent</button> 
                         </Grid>
                         <Grid item xs={5}>
-                            <p className="original-price">${this.state.price}/day</p>
+                            <p className="original-price">${this.props.car.price}/day</p>
                             <p className="amount-price">
                             <span className="from">all in:</span>
-                            ${this.state.price*this.props.days}<span className="from"></span>
+                            ${this.props.car.price*this.props.days}<span className="from"></span>
                             </p>
                         </Grid>
                     </Grid>

@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import './Animations.scss';
+import './Selector.css';
 import CustomDay from './Calendar'
 import CarCard from './CarCard'
 import { DateField } from '@mui/x-date-pickers/DateField';
@@ -16,22 +17,22 @@ import axios from 'axios';
 class SelectionMenu extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { value1: dayjs(), value2: dayjs(), daysCount:1, isSelectedCar:false, carId:0};
+        this.state = { value1: dayjs(), value2: dayjs(), daysCount:1, isSelectedCar:false, selectedCar:null, cars:[]};
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
     }
 
     componentDidMount() {
-        axios.get(`https://localhost:7146/Cars/GetAll`)
+        axios.get(`https://localhost:7146/api/Car/GetAll`)
           .then(res => {
-            const cars = res.data;
-            console.log(cars);
+            this.setState({ cars:res.data.value });
           })
     }
 
-    openObject(id){
-        this.setState({ carId:id });
+    openObject(car){
+        this.setState({ selectedCar:car });
         this.setState({isSelectedCar:true});
+        this.props.getDir(car.imgDir);
     }
 
     closeObject(){
@@ -41,13 +42,13 @@ class SelectionMenu extends React.Component{
     SecondPart(){
         console.log(this.state.isSelectedCar);
         if(this.state.isSelectedCar){
-            return(<InfoMenu getDir={(x)=>this.props.getDir(x)} close={()=>this.closeObject()} id={this.state.carId} days={this.state.daysCount}></InfoMenu>);
+            return(<InfoMenu close={()=>this.closeObject()} car={this.state.selectedCar} days={this.state.daysCount}></InfoMenu>);
         }else{
             return(
-                [0,1,2,3,4].map((x) => 
+                this.state.cars.map((x) => 
                     <Grid item xs={10}>
                         <div onClick={() => this.openObject(x)} className='glow cardCar'>
-                            <CarCard id={x}></CarCard>
+                            <CarCard car={x}></CarCard>
                         </div>
                     </Grid>
                 )
@@ -57,7 +58,7 @@ class SelectionMenu extends React.Component{
 
     render(){
         return (
-            <Grid container spacing={2} columns={10}>
+            <Grid container spacing={2} columns={10} sx={{marginBottom:'20px'}}>
                 <Grid item xs={3}>
                     <Grid container spacing={2} columns={1}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>

@@ -33,31 +33,31 @@ class CarCard extends React.Component{
                 <Grid container spacing={2}>
                     <Grid item>
                     <ButtonBase sx={{ width: 128, height: 128 }}>
-                        <Img alt="car" src={this.state.img} />
+                        <Img alt="car" src={"models/"+this.props.car.imgDir+"/thumbnail.jpg"} />
                     </ButtonBase>
                     </Grid>
                     <Grid item xs={12} sm container>
                     <Grid item xs container direction="column" spacing={2}>
                         <Grid item xs>
                         <Typography gutterBottom variant="subtitle1" component="div">
-                            {this.state.name}
+                            {this.props.car.brand+" "+this.props.car.model}
                         </Typography>
                         <Typography variant="body2" gutterBottom>
-                            Type: {this.state.type}
+                            Type: {this.props.car.type}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            Transmission: {this.state.transmission}
+                            Seats: {this.props.car.numberOfSeats}
                         </Typography>
                         </Grid>
                         <Grid item>
                         <Typography sx={{ cursor: 'pointer' }} variant="body2">
-                            Remove
+                            Welp
                         </Typography>
                         </Grid>
                     </Grid>
                     <Grid item>
                         <Typography variant="subtitle1" component="div">
-                        ${this.state.price} <br/>Per Day
+                        ${this.props.car.price} <br/>Per Day
                         </Typography>
                     </Grid>
                     </Grid>
