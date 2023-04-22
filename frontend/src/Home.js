@@ -1,20 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import SelectionMenu from './Selector'
-import Scene from './ThreeScene'
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Divider from '@mui/material/Divider';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import { flexbox } from '@mui/system';
-import { Typography } from '@mui/material';
-import { grey } from '@mui/material/colors';
 
-class Home extends React.Component{
+class Profile extends React.Component{
   constructor(props) {
     super(props);
     this.state = { dir:"", isActive:false};
@@ -29,32 +15,22 @@ class Home extends React.Component{
   GetCanvas(){
     if(this.state.isActive){
       return(
-        <Typography>Test Test</Typography>
+        <div></div>
       );
     }else{
       return(
         //<Scene dir={this.state.dir}></Scene>
-        <Typography>Test Test</Typography>
+        <div></div>
       );
     }
   }
 
   render(){
     return (
-      <Stack 
-      direction="row"
-      spacing={0}
-      sx={{height:'100%', overflow:'hidden'}}>
-        <Box sx={{height:'100%', display:'block', width:550, overflow:'scroll', boxSizing:'border-box'}}>
-          <SelectionMenu getDir={(x)=>this.updateDir(x)}/>
-        </Box>
-        <Box sx={{height:'100%', boxSizing:'border-box', width:'calc(100% - 550px)', position:'relative', borderRadius:'10px', marginLeft:1, backgroundColor:'grey'}}>
-          {this.GetCanvas()}
-        </Box>
-      </Stack>
+      <div></div>
         
     );
   }
 }
 
-export default Home;
+export default Profile;

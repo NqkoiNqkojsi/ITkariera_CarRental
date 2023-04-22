@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 
 const validationSchema = yup.object({
   email: yup
@@ -15,20 +16,43 @@ const validationSchema = yup.object({
     .string('Enter your password')
     .min(8, 'Password should be of minimum 8 characters length')
     .required('Password is required'),
+  firstName: yup
+    .string()
+    .required(),
+  lastName: yup
+    .string()
+    .required(),
+  phone: yup
+    .string()
+    .required(),
+  ucn: yup
+    .string()
+    .required(),
 });
 
 
-const FormLogIn = () => {
+const FormSignUp = () => {
+
+    const [cookies, setCookie] = useCookies(['id']);
+
     const formik = useFormik({
       initialValues: {
         email: '',
         password: '',
+        firstName: '',
+        lastName: '',
+        phone: '',
+        ucn:''
       },
       validationSchema: validationSchema,
       onSubmit: (values) => {
-        axios.post('https://localhost:7146/api/Account/Login', {
+        axios.post('https://localhost:7146/api/Account/Register', {
           email: values.email,
-          password: values.password
+          password: values.password,
+          firstName: values.firstName,
+          lastName: values.lastName,
+          phoneNumber: values.phone,
+          ucn: values.ucn
         },{
           headers: {
             'Content-Type': 'application/json'
@@ -36,6 +60,7 @@ const FormLogIn = () => {
         })
         .then(function (response) {
           console.log(response);
+          setCookie('id', "1", { path: '/' });
         })
         .catch(function (error) {
           console.log(error);
@@ -66,6 +91,38 @@ const FormLogIn = () => {
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
           />
+          <TextField
+            fullWidth
+            id="firstName"
+            name="firstName"
+            label="First Name"
+            value={formik.values.firstName}
+            onChange={formik.handleChange}
+          />
+          <TextField
+            fullWidth
+            id="lastName"
+            name="lastName"
+            label="Last Name"
+            value={formik.values.lastName}
+            onChange={formik.handleChange}
+          />
+          <TextField
+            fullWidth
+            id="phone"
+            name="phone"
+            label="Phone"
+            value={formik.values.phone}
+            onChange={formik.handleChange}
+          />
+          <TextField
+            fullWidth
+            id="ucn"
+            name="ucn"
+            label="EGN"
+            value={formik.values.ucn}
+            onChange={formik.handleChange}
+          />
           <Button color="primary" variant="contained" fullWidth type="submit">
             Submit
           </Button>
@@ -75,4 +132,4 @@ const FormLogIn = () => {
   };
 
 
-export default FormLogIn;
+export default FormSignUp;

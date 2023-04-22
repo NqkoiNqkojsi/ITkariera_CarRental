@@ -3,15 +3,15 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
-import './Animations.scss';
-import './Selector.css';
+import '../Styles/Animations.scss';
+import '../Styles/Selector.css';
 import CustomDay from './Calendar'
-import CarCard from './CarCard'
+import InfoMenu from './Cars/CarInfo';
+import CarCard from './Cars/CarCard'
 import { DateField } from '@mui/x-date-pickers/DateField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
-import InfoMenu from './CarInfo';
 import axios from 'axios';
 
 class SelectionMenu extends React.Component{

@@ -1,11 +1,8 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
-import './Animations.scss';
-import './Info.css';
-import CustomDay from './Calendar'
+import '../../Styles/Animations.scss';
+import '../../Styles/Info.css';
+import CustomDay from '../Calendar'
 import CarCard from './CarCard'
 import { DateField } from '@mui/x-date-pickers/DateField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';

@@ -1,8 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import '../Styles/App.css';
 import SelectionMenu from './Selector'
-import Scene from './ThreeScene'
+import Scene from './3D/ThreeScene'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
