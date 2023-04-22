@@ -65,7 +65,7 @@ namespace CarRentalAPI.Controllers
         }
 
         [HttpPost]
-        [Route("Query")]
+        [Route("CreateQuery")]
         public JsonResult CreateRent(Taken taken)
         {
             var car = _context.Cars.FirstOrDefault(c => c.Id == taken.CarID);
@@ -78,16 +78,32 @@ namespace CarRentalAPI.Controllers
             {
                 return new JsonResult(NotFound());
             }
-            if ((car.Taken.Any(t => t.To>taken.From && t.To<taken.To)) ||
-                (car.Taken.Any(t => t.From>taken.From && t.From<taken.To)) ||
-                 (car.Taken.Any(t => t.From < taken.From && t.To> taken.To)))
+            if ((car.Taken.Any(t => t.To > taken.From && t.To < taken.To)) ||
+                (car.Taken.Any(t => t.From > taken.From && t.From < taken.To)) ||
+                 (car.Taken.Any(t => t.From < taken.From && t.To > taken.To)) ||
+                 (car.Taken.Any(t => t.From > taken.From && t.To < taken.To)))
             {
                 return new JsonResult(BadRequest(taken));
             }
-
+            car.Taken.Add(taken);
             _context.Add(taken);
             _context.SaveChanges();
             return new JsonResult(Ok(taken));
+        }
+
+        [HttpPost]
+        [Route("CheckAvailability")]
+        public JsonResult CheckAvailability (FromTo fromTo)
+        {
+            var cars =
+            from c in _context.Cars
+            where !c.Taken.Any(t => t.From < fromTo.To && t.To > fromTo.From)
+            select c;
+            if (cars == null)
+            {
+                return new JsonResult(NotFound());
+            }
+            return new JsonResult(Ok(cars));
         }
 
     }
