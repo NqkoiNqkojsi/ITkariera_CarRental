@@ -1,7 +1,7 @@
 import React from 'react';
 import ViewGL from './ViewGL';
 
-export default class Scene extends React.Component {
+class Scene extends React.Component {
     constructor(props) {
         super(props);
         this.canvasRef = React.createRef();
@@ -41,9 +41,10 @@ export default class Scene extends React.Component {
 
     render() {
         return (
-            <div class="canvasContainer">
+            <div className="canvasContainer">
                 <canvas ref={this.canvasRef} />
             </div>
         );
     }
 }
+export default Scene;
