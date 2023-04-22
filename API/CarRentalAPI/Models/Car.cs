@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace CarRentalAPI.Models
 {
@@ -12,6 +13,7 @@ namespace CarRentalAPI.Models
         public int NumberOfSeats { get; set; }
         public string Description { get; set; }
         public string Price { get; set; }
+        [JsonIgnore]
         public Taken? Taken { get; set; }
     }
 }

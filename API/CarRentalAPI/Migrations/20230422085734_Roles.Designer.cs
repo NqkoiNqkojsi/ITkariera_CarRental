@@ -3,6 +3,7 @@ using System;
 using CarRentalAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRentalAPI.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230422085734_Roles")]
+    partial class Roles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -176,15 +179,15 @@ namespace CarRentalAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bc3851a8-507c-4447-9a23-e28b08aa500a",
-                            ConcurrencyStamp = "4e1cc58e-8494-4381-825d-25db52873917",
+                            Id = "fc4c8795-5304-4886-b7bd-04753a30599c",
+                            ConcurrencyStamp = "304b02a0-151d-44df-855e-769aa8fd5a4d",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "9379ee54-2c63-47b4-819b-0c54587244ef",
-                            ConcurrencyStamp = "af677ff4-9ffb-4d25-b068-fc932a660c2b",
+                            Id = "d291b4bb-c3bc-43b6-82db-5de2c6efbddf",
+                            ConcurrencyStamp = "574e5a77-df64-4e9a-95e7-db867817d00b",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

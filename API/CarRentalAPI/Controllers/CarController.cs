@@ -16,22 +16,26 @@ namespace CarRentalAPI.Controllers
         }
 
         [HttpPost]
-        [Route("CreateEdit")]
-        public JsonResult CreateEdit(Car car)
+        [Route("Create")]
+        public JsonResult Create(Car car)
         {
-            if (car.Id == 0)
-                _context.Cars.Add(car);
-            else
-            {
-                var DbCar = _context.Cars.Find(car.Id);
-                if (DbCar == null)
-                    return new JsonResult(NotFound());
-                DbCar = car;
-            }
+            _context.Cars.Add(car);
             _context.SaveChanges();
             return new JsonResult(Ok(car));
         }
 
+        [HttpPost]
+        [Route("Edit")]
+        public JsonResult Edit(Car car)
+        {
+            var DbCar = _context.Cars.Find(car.Id);
+            if (DbCar == null)
+                return new JsonResult(NotFound());
+            DbCar = car;
+            return new JsonResult(Ok(car));
+        }
+
+        
         [HttpGet]
         [Route("GetByID")]
         public JsonResult GetById(int id)

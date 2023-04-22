@@ -23,6 +23,7 @@ builder.Services.AddIdentity<ApiUser, IdentityRole>(u => u.User.RequireUniqueEma
         .AddRoles<IdentityRole>();
 
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
