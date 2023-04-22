@@ -87,7 +87,7 @@ namespace CarRentalAPI.Controllers
 
             _context.Add(taken);
             _context.SaveChanges();
-            return new JsonResult(Ok(taken))
+            return new JsonResult(Ok(taken));
         }
 
     }
