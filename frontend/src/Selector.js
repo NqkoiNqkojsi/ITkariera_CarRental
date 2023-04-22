@@ -3,20 +3,46 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
-import './App.css';
+import './Animations.scss';
 import CustomDay from './Calendar'
 import CarCard from './CarCard'
 import { DateField } from '@mui/x-date-pickers/DateField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
+import InfoMenu from './CarInfo';
 
 class SelectionMenu extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { value1: dayjs(), value2: dayjs(), daysCount:1};
+        this.state = { value1: dayjs(), value2: dayjs(), daysCount:1, isSelectedCar:false, carId:0};
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
+    }
+
+    openObject(id){
+        this.setState({ carId:id });
+        this.setState({isSelectedCar:true});
+    }
+
+    closeObject(){
+        this.setState({isSelectedCar:false});
+    }
+
+    SecondPart(){
+        if(this.state.isSelectedCar){
+            return(<InfoMenu close={this.closeObject()} id={this.state.carId}></InfoMenu>);
+        }else{
+            return(
+                [0,1,2,3,4].map((x) => 
+                    <Grid item xs={10}>
+                        <div onClick={this.openObject(x)} className='glow cardCar'>
+                            <CarCard id={x}></CarCard>
+                        </div>
+                    </Grid>
+                )
+            );
+        }
     }
 
     render(){
@@ -57,11 +83,7 @@ class SelectionMenu extends React.Component{
                     <CustomDay value1={this.state.value1} value2={this.state.value2}/>
                 </Grid>
                 <Divider orientation="horizontal" variant="middle"/>
-                {[0,0,0,0,0].map(() => 
-                    <Grid item xs={10}>
-                        <CarCard></CarCard>
-                    </Grid>)
-                }
+                {this.SecondPart()}
             </Grid>  
         );
     }

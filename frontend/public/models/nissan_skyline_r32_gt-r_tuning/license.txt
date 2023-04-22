@@ -1,0 +1,11 @@
+Model Information:
+* title:	Nissan Skyline R32 GT-R (tuning)
+* source:	https://sketchfab.com/3d-models/nissan-skyline-r32-gt-r-tuning-507e661aa1a6474a8da1bab9b3d54180
+* author:	delete (https://sketchfab.com/Veisun)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Nissan Skyline R32 GT-R (tuning)" (https://sketchfab.com/3d-models/nissan-skyline-r32-gt-r-tuning-507e661aa1a6474a8da1bab9b3d54180) by delete (https://sketchfab.com/Veisun) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

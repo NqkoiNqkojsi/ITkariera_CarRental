@@ -13,6 +13,11 @@ const Img = styled('img')({
 });
 
 class CarCard extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = { name: "Toyota Supra Mk4", type:"Sports Car", transmission:"Automatic",price: 52.99, img:"/models/toyota_supra_mk4__supra_1997__free_download/thumbnail.jpg"};
+    }
+
     render(){
             return (
                 <Paper
@@ -28,20 +33,20 @@ class CarCard extends React.Component{
                 <Grid container spacing={2}>
                     <Grid item>
                     <ButtonBase sx={{ width: 128, height: 128 }}>
-                        <Img alt="complex" src="./logo.svg" />
+                        <Img alt="car" src={this.state.img} />
                     </ButtonBase>
                     </Grid>
                     <Grid item xs={12} sm container>
                     <Grid item xs container direction="column" spacing={2}>
                         <Grid item xs>
                         <Typography gutterBottom variant="subtitle1" component="div">
-                            Standard license
+                            {this.state.name}
                         </Typography>
                         <Typography variant="body2" gutterBottom>
-                            Full resolution 1920x1080 • JPEG
+                            Type: {this.state.type}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            ID: 1030114
+                            Transmission: {this.state.transmission}
                         </Typography>
                         </Grid>
                         <Grid item>
@@ -52,7 +57,7 @@ class CarCard extends React.Component{
                     </Grid>
                     <Grid item>
                         <Typography variant="subtitle1" component="div">
-                        $19.00
+                        ${this.state.price} <br/>Per Day
                         </Typography>
                     </Grid>
                     </Grid>

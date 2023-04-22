@@ -1,0 +1,11 @@
+Model Information:
+* title:	Toyota 4Runner Mk4 Stock
+* source:	https://sketchfab.com/3d-models/toyota-4runner-mk4-stock-1d03fb82b26b43888d746a471d375798
+* author:	4x4 Mania (https://sketchfab.com/4x4Mania)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Toyota 4Runner Mk4 Stock" (https://sketchfab.com/3d-models/toyota-4runner-mk4-stock-1d03fb82b26b43888d746a471d375798) by 4x4 Mania (https://sketchfab.com/4x4Mania) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

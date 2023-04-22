@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dacia 1300 Safari Concept
+* source:	https://sketchfab.com/3d-models/dacia-1300-safari-concept-96f45864ccde4cce97656c21a0fe6d18
+* author:	Dilăr (https://sketchfab.com/andreidila)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dacia 1300 Safari Concept" (https://sketchfab.com/3d-models/dacia-1300-safari-concept-96f45864ccde4cce97656c21a0fe6d18) by Dilăr (https://sketchfab.com/andreidila) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
