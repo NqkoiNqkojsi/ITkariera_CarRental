@@ -15,15 +15,15 @@ import dayjs from 'dayjs';
 class InfoMenu extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { brand: "Toyota", model:"Supra Mk4", type:"Sports Car", year:"1999", space:"5",price: 52.99, img:"/models/toyota_supra_mk4__supra_1997__free_download/thumbnail.jpg"};
-
+        this.state = { brand: "Toyota", model:"Supra Mk4", type:"Sports Car", year:"1999", space:"5",price: 52.99, dir:"/models/toyota_supra_mk4__supra_1997__free_download/"};
+        this.props.getDir(this.state.dir);
     }
 
     render(){
         return (
             <figure className="product-card">
                 <div className='containerImg'>
-                    <img className="product-card-img" src={this.state.img} alt={this.state.model}/>
+                    <img className="product-card-img" src={this.state.dir+"thumbnail.jpg"} alt={this.state.model}/>
                     <button onClick={()=>this.props.close()} className="previous round">&#8249;</button>
                 </div>
                 <figcaption>

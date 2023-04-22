@@ -32,7 +32,7 @@ class SelectionMenu extends React.Component{
     SecondPart(){
         console.log(this.state.isSelectedCar);
         if(this.state.isSelectedCar){
-            return(<InfoMenu close={()=>this.closeObject()} id={this.state.carId} days={this.state.daysCount}></InfoMenu>);
+            return(<InfoMenu getDir={(x)=>this.props.getDir(x)} close={()=>this.closeObject()} id={this.state.carId} days={this.state.daysCount}></InfoMenu>);
         }else{
             return(
                 [0,1,2,3,4].map((x) => 
