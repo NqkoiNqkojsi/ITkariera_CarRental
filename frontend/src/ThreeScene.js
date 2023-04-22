@@ -2,16 +2,12 @@ import React from 'react';
 import ViewGL from './ViewGL';
 
 class Scene extends React.Component {
-    constructor(props) {
-        super(props);
-        this.canvasRef = React.createRef();
-    }
 
     // ******************* COMPONENT LIFECYCLE ******************* //
     componentDidMount() {
         // Get canvas, pass to custom class
-        const canvas = this.canvasRef.current;
-        this.viewGL = new ViewGL(canvas);
+        //const canvas = this.canvasRef.current;
+        this.viewGL = new ViewGL(this.props.dir);
 
         // Init any event listeners
         window.addEventListener('mousemove', this.mouseMove);
@@ -41,8 +37,8 @@ class Scene extends React.Component {
 
     render() {
         return (
-            <div className="canvasContainer">
-                <canvas ref={this.canvasRef} />
+            <div id="threeCont" className="canvasContainer">
+                
             </div>
         );
     }

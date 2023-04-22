@@ -90,7 +90,7 @@ namespace CarRentalAPI.Controllers
             _context.SaveChanges();
             return new JsonResult(Ok(taken));
         }
-
+        //http:[url]?id
         [HttpPost]
         [Route("CheckAvailability")]
         public JsonResult CheckAvailability (FromTo fromTo)

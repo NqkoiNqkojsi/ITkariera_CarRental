@@ -15,7 +15,7 @@ namespace CarRentalAPI.Models
         public string Description { get; set; }
         public string Price { get; set; }
         [JsonIgnore]
-        public List<Taken> Taken { get; set; }
+        public List<Taken> Taken =new List<Taken>();
         public string ImgDir { get; set; }
     }
 }

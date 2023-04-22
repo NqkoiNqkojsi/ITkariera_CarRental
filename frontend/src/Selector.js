@@ -11,6 +11,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import InfoMenu from './CarInfo';
+import axios from 'axios';
 
 class SelectionMenu extends React.Component{
     constructor(props) {
@@ -18,6 +19,14 @@ class SelectionMenu extends React.Component{
         this.state = { value1: dayjs(), value2: dayjs(), daysCount:1, isSelectedCar:false, carId:0};
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
+    }
+
+    componentDidMount() {
+        axios.get(`https://localhost:7146/Cars/GetAll`)
+          .then(res => {
+            const cars = res.data;
+            console.log(cars);
+          })
     }
 
     openObject(id){

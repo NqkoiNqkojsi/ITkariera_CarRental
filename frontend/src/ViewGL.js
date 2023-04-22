@@ -5,14 +5,10 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
 export default class ViewGL{
-    constructor(canvasRef) {
-        this.renderer = new THREE.WebGLRenderer({
-            canvas: canvasRef,
-            antialias: false,
-        });
+    constructor(dir) {
 
-        const container = document.createElement( 'div' );
-		document.body.appendChild( container );
+        const container = document.getElementById( 'threeCont' );
+		//document.body.appendChild( container );
 
 		this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
 		this.camera.position.set( - 1.8, 0.6, 2.7 );
@@ -32,8 +28,8 @@ export default class ViewGL{
 
 				// model
 
-				const loader = new GLTFLoader().setPath( 'models/gltf/DamagedHelmet/glTF/' );
-				loader.load( 'DamagedHelmet.gltf', function ( gltf ) {
+				const loader = new GLTFLoader().setPath( 'models/'+dir );
+				loader.load( 'scene.gltf', function ( gltf ) {
 
 					this.scene.add( gltf.scene );
 
@@ -42,13 +38,13 @@ export default class ViewGL{
 				} );
 
 			} );
-
+        this.renderer = new THREE.WebGLRenderer( { antialias: true } );
         this.renderer.setPixelRatio( window.devicePixelRatio );
 		this.renderer.setSize( window.innerWidth, window.innerHeight );
 		this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
 		this.renderer.toneMappingExposure = 1;
 		this.renderer.outputEncoding = THREE.sRGBEncoding;
-		//container.appendChild( this.renderer.domElement );
+		container.appendChild( this.renderer.domElement );
 
 		const controls = new OrbitControls( this.camera, this.renderer.domElement );
 		controls.addEventListener( 'change', this.render ); // use if there is no animation loop
