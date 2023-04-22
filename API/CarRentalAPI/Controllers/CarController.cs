@@ -23,6 +23,7 @@ namespace CarRentalAPI.Controllers
             {
                 return new JsonResult(BadRequest(car));
             }
+            car.Taken = new List<Taken>();
             _context.Cars.Add(car);
             _context.SaveChanges();
             return new JsonResult(Ok(car));
