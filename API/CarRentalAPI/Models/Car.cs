@@ -9,11 +9,13 @@ namespace CarRentalAPI.Models
         public int Id { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
+        public string Type { get; set; }
         public int Year { get; set; }
         public int NumberOfSeats { get; set; }
         public string Description { get; set; }
         public string Price { get; set; }
         [JsonIgnore]
-        public Taken? Taken { get; set; }
+        public List<Taken> Taken { get; set; }
+        public string ImgDir { get; set; }
     }
 }

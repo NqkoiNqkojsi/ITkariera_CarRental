@@ -21,7 +21,6 @@ namespace CarRentalAPI.Models
         
         public string UCN { get; set; }
 
-        public ICollection<string> Roles { get; set; }
 
     }
 }

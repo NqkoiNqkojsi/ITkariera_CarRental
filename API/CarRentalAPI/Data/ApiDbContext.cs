@@ -14,6 +14,7 @@ namespace CarRentalAPI.Data
         }
         public DbSet<Car> Cars { get; set; }
         public DbSet<ApiUser> Users { get; set; }
+        public DbSet<Taken> Queries { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

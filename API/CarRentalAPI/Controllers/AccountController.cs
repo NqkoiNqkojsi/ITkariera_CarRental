@@ -57,7 +57,7 @@ namespace CarRentalAPI.Controllers
                     }
                     return BadRequest(ModelState);
                 }
-                await _userManager.AddToRolesAsync(user, userDTO.Roles);
+                await _userManager.AddToRoleAsync(user, "User");
                 return Accepted();
 
             }

@@ -9,7 +9,8 @@ namespace CarRentalAPI.Models
         public int Id { get; set; }
         public DateTime From { get; set; }
         public DateTime To { get; set; }
-        [JsonIgnore]
-        public List<Car> Cars { get; set; }
+        public int CarID { get; set; }
+        public string UserID { get; set; }
+
     }
 }
