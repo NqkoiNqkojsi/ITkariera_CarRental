@@ -12,6 +12,7 @@ class App extends React.Component{
   }
 
   changeApp(app){
+    console.log(app);
     this.setState({app:app});
   }
 

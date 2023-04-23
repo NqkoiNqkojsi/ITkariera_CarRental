@@ -24,9 +24,9 @@ function DenseAppBar({changeApp}) {
                 </Typography>
             </Grid>
             <Grid item xs={22} >
-                <Button onClick={changeApp('home')} sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<HomeIcon />}>Home</Button>
-                <Button onClick={changeApp('content')} sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<DateIcon />}>By Dates</Button>
-                <Button onClick={changeApp('content')} sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<CarIcon />}>Cars</Button>
+                <Button onClick={()=>changeApp('home')} sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<HomeIcon />}>Home</Button>
+                <Button onClick={()=>changeApp('content')} sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<DateIcon />}>By Dates</Button>
+                <Button onClick={()=>changeApp('content')} sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<CarIcon />}>Cars</Button>
             </Grid>
             <Grid item xs={1}>
                 <UserModal changeApp={(x)=>changeApp(x)}></UserModal>
