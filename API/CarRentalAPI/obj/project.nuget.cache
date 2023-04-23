@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j2nPyE0bcDiAGBUpgBOTY4u7Gg1UlPo5cTeJgvd4glB8R9Nutc81LVBqDqwxghWdGjVb06Vqcd8MQCtuYEaGvA==",
+  "dgSpecHash": "ys05fb4qzeyie8F4VuRVakHFSoggyhE0hdLq0DM80cHDZ+zs38SW06lapaPT+KhWSzSOpIugJxtJ4ZTsA8B+Vw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\devor\\Source\\Repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj",
+  "projectFilePath": "C:\\Users\\devor\\source\\repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\devor\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\devor\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

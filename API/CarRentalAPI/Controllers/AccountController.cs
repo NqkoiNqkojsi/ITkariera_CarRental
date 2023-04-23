@@ -58,7 +58,7 @@ namespace CarRentalAPI.Controllers
                     return BadRequest(ModelState);
                 }
                 await _userManager.AddToRoleAsync(user, "User");
-                return Accepted();
+                return Ok(new { Id = user.Id });
 
             }
             catch (Exception ex)
@@ -112,7 +112,7 @@ namespace CarRentalAPI.Controllers
                 expires_in = token.ValidTo.Subtract(DateTime.UtcNow).TotalSeconds
             };
 
-            return Ok(response);
+            return Ok(new { Id = user.Id });
         }
 
 
