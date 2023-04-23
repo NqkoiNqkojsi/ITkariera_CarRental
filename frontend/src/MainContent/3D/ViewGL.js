@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 let camera, scene, renderer;
+let model;
 
 class ViewGL{
     constructor(canvasRef, dir) {
@@ -42,8 +43,8 @@ class ViewGL{
 			console.log(dir);
 			const loader = new GLTFLoader()
 			loader.load( 'models/'+dir+'/scene.gltf', function ( gltf ) {
-
-				scene.add( gltf.scene );
+				model=gltf.scene;
+				scene.add( model );
 
 				//this.render();
 
@@ -61,7 +62,6 @@ class ViewGL{
 		controls.update();
 
 		window.addEventListener( 'resize', this.onWindowResize );
-		this.render();
 
 	}
 
@@ -77,7 +77,9 @@ class ViewGL{
 	}
 	
 	updateValue=(value)=>{
-		// Whatever you need to do with React props
+		//console.log(value);
+		//scene.remove( model );
+		
 	}
 
 			//

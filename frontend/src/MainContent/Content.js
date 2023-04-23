@@ -24,7 +24,7 @@ class Content extends React.Component{
     console.log("isActive="+this.state.isActive.toString());
     if(!this.state.isActive){
       return(
-        <Typography>Test Test</Typography>
+        <Typography></Typography>
       );
     }else{
       return(
@@ -42,7 +42,7 @@ class Content extends React.Component{
         <Box sx={{height:'100%', display:'block', width:550, overflow:'scroll', boxSizing:'border-box'}}>
           <SelectionMenu getDir={(x)=>this.updateDir(x)}/>
         </Box>
-        <Box sx={{height:'100%', boxSizing:'border-box', width:'calc(100% - 550px)', position:'relative', borderRadius:'10px', marginLeft:1, backgroundColor:'grey'}}>
+        <Box sx={{height:'100%', boxSizing:'border-box', width:'calc(100% - 550px)', position:'relative', borderRadius:'10px', marginLeft:1, backgroundColor:'grey', backgroundImage:'PicoRentals.png'}}>
           <div id="three">
           {this.GetCanvas()}
           </div>

@@ -11,7 +11,6 @@ import { margin } from '@mui/system';
 
 
 const Profile = ({}) => {
-  const [Admin, setAdmin] = React.useState(false);
   const getCookie=(key)=> {
     let b = document.cookie.match("(^|;)\\s*" + key + "\\s*=\\s*([^;]+)");
     return b;
@@ -19,7 +18,7 @@ const Profile = ({}) => {
   const isAdmin=()=>{
     let id=getCookie("id");
     axios.post('https://localhost:7146/api/Account/IsAdmin', {
-        id:id
+        id:id[2]
       },{
         headers: {
           'Content-Type': 'application/json'
@@ -27,87 +26,20 @@ const Profile = ({}) => {
       })
       .then(function (response) {
         console.log(response);
-        setAdmin(response.data);
+        return(response.data);
       })
       .catch(function (error) {
         console.log(error);
-        alert("there has been an error! Try again");
+        //emiiiiiii
+        return(true);
     });
   }
 
   const displayStuff=()=>{
-    if(isAdmin){
+
+    if(isAdmin()){
       return(
         <form onSubmit={formik.handleSubmit}>
-        <TextField
-            fullWidth
-            id="lastName"
-            name="lastName"
-            label="Last Name"
-            value={formik.values.lastName}
-            onChange={formik.handleChange}
-            sx={{margin:'10px'}}
-          />
-        <TextField
-            fullWidth
-            id="lastName"
-            name="lastName"
-            label="Last Name"
-            value={formik.values.lastName}
-            onChange={formik.handleChange}
-            sx={{margin:'10px'}}
-          />
-        <Button color="primary" variant="contained" fullWidth type="submit" sx={{margin:'10px'}}>
-          Submit
-        </Button>
-      </form>
-      );
-    }else{
-      return(<p>ne si admin</p>);
-    }
-  }
-
-  const formik = useFormik({
-    initialValues: {
-      brand: '',
-      model: '',
-      type: '',
-      price: '',
-      imgDir: '',
-      description: '',
-      numberOfSeats: 4,
-      year: 2000,
-    },
-    onSubmit: (values) => {
-      axios.post('https://localhost:7146/api/Car/Create', {
-        brand: values.brand,
-        model: values.model,
-        type: values.type,
-        price: values.price,
-        imgDir: values.imgDir,
-        description: values.description,
-        numberOfSeats: values.numberOfSeats,
-        year: values.year,
-      },{
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(function (response) {
-        console.log(response);
-        
-      })
-      .catch(function (error) {
-        console.log(error);
-        alert("there has been an error! Try again");
-      });
-    },
-  });
-
-
-  return (
-    <div>
-      <form onSubmit={formik.handleSubmit}>
         <TextField
             fullWidth
             id="brand"
@@ -184,6 +116,53 @@ const Profile = ({}) => {
           Submit
         </Button>
       </form>
+      );
+    }else{
+      return(<p>ne si admin</p>);
+    }
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      brand: '',
+      model: '',
+      type: '',
+      price: '',
+      imgDir: '',
+      description: '',
+      numberOfSeats: 4,
+      year: 2000,
+    },
+    onSubmit: (values) => {
+      axios.post('https://localhost:7146/api/Car/Create', {
+        brand: values.brand,
+        model: values.model,
+        type: values.type,
+        price: values.price,
+        imgDir: values.imgDir,
+        description: values.description,
+        numberOfSeats: values.numberOfSeats,
+        year: values.year,
+      },{
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+        
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("there has been an error! Try again");
+      });
+    },
+  });
+
+
+  return (
+    <div>
+      {displayStuff()}
     </div>
   );
 };
