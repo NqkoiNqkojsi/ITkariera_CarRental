@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\source\\repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj": {}
+    "C:\\Users\\devor\\Source\\Repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\source\\repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj": {
+    "C:\\Users\\devor\\Source\\Repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj",
+        "projectUniqueName": "C:\\Users\\devor\\Source\\Repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj",
         "projectName": "CarRentalAPI",
-        "projectPath": "C:\\Users\\PC\\source\\repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\source\\repos\\ITkariera_CarRental\\API\\CarRentalAPI\\obj\\",
+        "projectPath": "C:\\Users\\devor\\Source\\Repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj",
+        "packagesPath": "C:\\Users\\devor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\devor\\Source\\Repos\\ITkariera_CarRental\\API\\CarRentalAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\devor\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -97,10 +98,29 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -109,7 +129,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

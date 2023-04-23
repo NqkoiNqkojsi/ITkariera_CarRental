@@ -2,6 +2,7 @@
 using CarRentalAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalAPI.Controllers
 {
@@ -96,16 +97,18 @@ namespace CarRentalAPI.Controllers
         [Route("CheckAvailability")]
         public JsonResult CheckAvailability (FromTo fromTo)
         {
-            var cars =
-            from c in _context.Cars
-            where !c.Taken.Any(t => t.From < fromTo.To && t.To > fromTo.From)
-            select c;
+            var cars = from c in _context.Cars
+                       where !_context.Queries
+                            .Any(t => t.CarID == c.Id && t.From <= fromTo.To && t.To >= fromTo.From)
+                       select c;
+
             if (cars == null)
             {
                 return new JsonResult(NotFound());
             }
+
             return new JsonResult(Ok(cars));
-        }
+        }   
 
     }
 }
