@@ -50,4 +50,4 @@ class Content extends React.Component{
   }
 }
 
-export default Content;
+export default React.memo(Content);

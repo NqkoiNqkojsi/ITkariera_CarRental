@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
@@ -31,7 +30,7 @@ const validationSchema = yup.object({
 });
 
 
-const FormSignUp = () => {
+const FormSignUp = ({closeModal}) => {
 
     const [cookies, setCookie] = useCookies(['id']);
 
@@ -61,6 +60,7 @@ const FormSignUp = () => {
         .then(function (response) {
           console.log(response);
           setCookie('id', "1", { path: '/' });
+          closeModal();
         })
         .catch(function (error) {
           console.log(error);
@@ -79,6 +79,7 @@ const FormSignUp = () => {
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
+            sx={{margin:'10px'}}
           />
           <TextField
             fullWidth
@@ -90,6 +91,7 @@ const FormSignUp = () => {
             onChange={formik.handleChange}
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
+            sx={{margin:'10px'}}
           />
           <TextField
             fullWidth
@@ -98,6 +100,7 @@ const FormSignUp = () => {
             label="First Name"
             value={formik.values.firstName}
             onChange={formik.handleChange}
+            sx={{margin:'10px'}}
           />
           <TextField
             fullWidth
@@ -106,6 +109,7 @@ const FormSignUp = () => {
             label="Last Name"
             value={formik.values.lastName}
             onChange={formik.handleChange}
+            sx={{margin:'10px'}}
           />
           <TextField
             fullWidth
@@ -114,6 +118,7 @@ const FormSignUp = () => {
             label="Phone"
             value={formik.values.phone}
             onChange={formik.handleChange}
+            sx={{margin:'10px'}}
           />
           <TextField
             fullWidth
@@ -122,8 +127,9 @@ const FormSignUp = () => {
             label="EGN"
             value={formik.values.ucn}
             onChange={formik.handleChange}
+            sx={{margin:'10px'}}
           />
-          <Button color="primary" variant="contained" fullWidth type="submit">
+          <Button color="primary" variant="contained" fullWidth type="submit" sx={{margin:'10px'}}>
             Submit
           </Button>
         </form>

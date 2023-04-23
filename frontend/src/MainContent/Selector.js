@@ -120,4 +120,4 @@ class SelectionMenu extends React.Component{
     }
 }
 
-export default SelectionMenu;
+export default React.memo(SelectionMenu);
