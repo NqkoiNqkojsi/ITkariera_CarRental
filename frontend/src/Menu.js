@@ -10,8 +10,9 @@ import IconButton from '@mui/material/IconButton';
 import HomeIcon from '@mui/icons-material/Home';
 import DateIcon from '@mui/icons-material/CalendarMonth';
 import CarIcon from '@mui/icons-material/DirectionsCar';
+import UserModal from './UserRegister/RegisterModal';
 
-export default function DenseAppBar() {
+function DenseAppBar({changeApp}) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -23,14 +24,12 @@ export default function DenseAppBar() {
                 </Typography>
             </Grid>
             <Grid item xs={22} >
-                <Button sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<HomeIcon />}>Home</Button>
-                <Button sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<DateIcon />}>By Dates</Button>
-                <Button sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<CarIcon />}>Cars</Button>
+                <Button onClick={changeApp('home')} sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<HomeIcon />}>Home</Button>
+                <Button onClick={changeApp('content')} sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<DateIcon />}>By Dates</Button>
+                <Button onClick={changeApp('content')} sx={{ color: 'white', marginRight: 1 }} variant="outlined" startIcon={<CarIcon />}>Cars</Button>
             </Grid>
             <Grid item xs={1}>
-                <IconButton sx={{ margin:0}}>
-                    <Avatar sx={{ height:25, width:25, margin:0 }} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                </IconButton>
+                <UserModal changeApp={(x)=>changeApp(x)}></UserModal>
             </Grid>
         </Grid>
         </Toolbar>
@@ -38,3 +37,4 @@ export default function DenseAppBar() {
     </Box>
   );
 }
+export default React.memo(DenseAppBar);
