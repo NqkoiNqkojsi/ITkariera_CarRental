@@ -26,7 +26,25 @@ class SelectionMenu extends React.Component{
         axios.get(`https://localhost:7146/api/Car/GetAll`)
           .then(res => {
             this.setState({ cars:res.data.value });
-          })
+          });
+          this.getAvailableCars();
+    }
+
+    getAvailableCars=()=>{
+        axios.post('https://localhost:7146/api/Car/CheckAvailability', {
+            from: this.state.value1.format('YYYY-MM-DDTHH:mm:ss'),
+            to: this.state.value2.format('YYYY-MM-DDTHH:mm:ss'),
+            },{
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 
     openObject(car){
@@ -42,7 +60,7 @@ class SelectionMenu extends React.Component{
     SecondPart(){
         console.log(this.state.isSelectedCar);
         if(this.state.isSelectedCar){
-            return(<InfoMenu close={()=>this.closeObject()} car={this.state.selectedCar} days={this.state.daysCount}></InfoMenu>);
+            return(<InfoMenu close={()=>this.closeObject()} car={this.state.selectedCar} day1={this.state.value1.format('YYYY-MM-DDTHH:mm:ss')} day2={this.state.value2.format('YYYY-MM-DDTHH:mm:ss')} days={this.state.daysCount}></InfoMenu>);
         }else{
             return(
                 this.state.cars.map((x) => 
@@ -101,7 +119,8 @@ class SelectionMenu extends React.Component{
 
     handleChange1(e) {
         this.setState({ daysCount:Math.abs(e.diff(this.state.value2, 'days'))+1});
-        this.setState({ value1: e.toDate() });
+        this.setState({ value1: dayjs(e) });
+        console.log(this.state.value1);
         if(e.isAfter(this.state.value2)){
             
         }else{
@@ -111,9 +130,10 @@ class SelectionMenu extends React.Component{
 
     handleChange2(e) {
         this.setState({ daysCount:Math.abs(e.diff(this.state.value1, 'days'))+1});
-        this.setState({ value2: e.toDate() });
+        this.setState({ value2: dayjs(e) });
+        console.log(this.state.value1);
         if(e.isBefore(this.state.value1)){
-
+            
         }else{
             
         }

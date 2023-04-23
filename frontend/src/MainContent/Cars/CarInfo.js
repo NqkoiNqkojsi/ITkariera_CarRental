@@ -1,5 +1,7 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 import '../../Styles/Animations.scss';
 import '../../Styles/Info.css';
 import CustomDay from '../Calendar'
@@ -8,11 +10,56 @@ import { DateField } from '@mui/x-date-pickers/DateField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
+import axios from 'axios';
 
 class InfoMenu extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { brand: "Toyota", model:"Supra Mk4", type:"Sports Car", year:"1999", space:"5",price: 52.99, dir:"/models/toyota_supra_mk4__supra_1997__free_download/"};
+        this.state = {open:false, brand: "Toyota", model:"Supra Mk4", type:"Sports Car", year:"1999", space:"5",price: 52.99, dir:"/models/toyota_supra_mk4__supra_1997__free_download/"};
+    }
+    handleOpen(){
+        this.setState({open:true});
+    };
+    
+    handleClose(){
+        this.setState({open:false});
+    };
+
+    getCookie(key){
+        let b = document.cookie.match("(^|;)\\s*" + key + "\\s*=\\s*([^;]+)");
+        return b;
+    }
+
+    rentCar=()=>{
+        let userID=this.getCookie('id');
+        console.log(this.props.car.id);
+        if(userID==null){
+            return(
+            <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
+                <Alert onClose={this.handleClose} severity="error" sx={{ width: '100%' }}>
+                  You have to be logged in!
+                </Alert>
+            </Snackbar>
+            );
+        }else{
+            axios.post('https://localhost:7146/api/Car/CreateQuery', {
+            from: this.props.day1,
+            to: this.props.day2,
+            userID:userID,
+            carID:this.props.car.id
+            },{
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                //console.log(this.props.day1);
+                console.log(error);
+            });
+        }
     }
 
     render(){
@@ -30,7 +77,7 @@ class InfoMenu extends React.Component{
                             <h3 className="product-card-address">
                                 Space: {this.props.car.numberOfSeats}
                             </h3>
-                            <button className="ghost glow" id="Rent">Rent</button> 
+                            <button className="ghost glow" id="Rent" onClick={()=>this.rentCar()}>Rent</button> 
                         </Grid>
                         <Grid item xs={5}>
                             <p className="original-price">${this.props.car.price}/day</p>
