@@ -43,7 +43,9 @@ class Content extends React.Component{
           <SelectionMenu getDir={(x)=>this.updateDir(x)}/>
         </Box>
         <Box sx={{height:'100%', boxSizing:'border-box', width:'calc(100% - 550px)', position:'relative', borderRadius:'10px', marginLeft:1, backgroundColor:'grey'}}>
+          <div id="three">
           {this.GetCanvas()}
+          </div>
         </Box>
       </Stack>
         

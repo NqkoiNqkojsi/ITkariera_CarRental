@@ -3,19 +3,33 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+let camera, scene, renderer;
 
-const ViewGL = ({dir}) => {
-    let camera, scene, renderer;
+class ViewGL{
+    constructor(canvasRef, dir) {
+        this.scene = new THREE.Scene();
+        this.renderer = new THREE.WebGLRenderer({
+            canvas: canvasRef,
+            antialias: false,
+        });
+		this.init(canvasRef,dir);
+		this.render();
+	}
 
-	const init=()=> {
+	init=(canvasRef, dir)=> {
 
-		const container = document.createElement( 'div' );
-		document.body.appendChild( container );
+		const container = document.getElementById("three");
 
 		camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
 		camera.position.set( - 1.8, 0.6, 2.7 );
 
 		scene = new THREE.Scene();
+		renderer = new THREE.WebGLRenderer( { antialias: true , canvas: canvasRef,} );
+		renderer.setPixelRatio( window.devicePixelRatio );
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		renderer.toneMapping = THREE.ACESFilmicToneMapping;
+		renderer.toneMappingExposure = 1;
+		renderer.outputEncoding = THREE.sRGBEncoding;
 
 		new RGBELoader()
 			.load( 'models/royal_esplanade_1k.hdr', function ( texture ) {
@@ -25,7 +39,7 @@ const ViewGL = ({dir}) => {
 			scene.background = texture;
 			scene.environment = texture;
 
-			render();
+			//this.render();
 
 			// model
 			console.log(dir);
@@ -34,50 +48,47 @@ const ViewGL = ({dir}) => {
 
 				scene.add( gltf.scene );
 
-					render();
+				this.render();
 
 				} );
 
 			} );
 
-		renderer = new THREE.WebGLRenderer( { antialias: true } );
-		renderer.setPixelRatio( window.devicePixelRatio );
-		renderer.setSize( window.innerWidth, window.innerHeight );
-		renderer.toneMapping = THREE.ACESFilmicToneMapping;
-		renderer.toneMappingExposure = 1;
-		renderer.outputEncoding = THREE.sRGBEncoding;
-		container.appendChild( renderer.domElement );
+		
 
 		const controls = new OrbitControls( camera, renderer.domElement );
-		controls.addEventListener( 'change', render ); // use if there is no animation loop
+		controls.addEventListener( 'change', this.render ); // use if there is no animation loop
 		controls.minDistance = 2;
 		controls.maxDistance = 10;
 		controls.target.set( 0, 0, - 0.2 );
 		controls.update();
 
-		window.addEventListener( 'resize', onWindowResize );
+		window.addEventListener( 'resize', this.onWindowResize );
 
 	}
 
-	const onWindowResize=()=> {
+	onWindowResize=()=> {
 
 		camera.aspect = window.innerWidth / window.innerHeight;
 		camera.updateProjectionMatrix();
 
 		renderer.setSize( window.innerWidth, window.innerHeight );
 
-		render();
+		this.render();
 
+	}
+	
+	updateValue=(value)=>{
+		// Whatever you need to do with React props
 	}
 
 			//
 
-	const render=()=>{
+	render=()=>{
 
 		renderer.render( scene, camera );
 
 	}
-	init();
-	render();
+	
 }
 export default ViewGL;
