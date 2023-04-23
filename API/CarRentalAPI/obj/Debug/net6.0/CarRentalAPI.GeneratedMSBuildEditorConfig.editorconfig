@@ -8,17 +8,9 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CarRentalAPI
 build_property.RootNamespace = CarRentalAPI
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\PC\source\repos\ITkariera_CarRental\API\CarRentalAPI\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\PC\source\repos\ITkariera_CarRental\API\CarRentalAPI
-=======
-build_property.ProjectDir = C:\Users\devor\source\repos\ITkariera_CarRental\API\CarRentalAPI\
-build_property.RazorLangVersion = 6.0
-build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\devor\source\repos\ITkariera_CarRental\API\CarRentalAPI
->>>>>>> c8b59d92ae15d8d6375b7bc0fe46be611f6c4be6
 build_property._RazorSourceGeneratorDebug = 

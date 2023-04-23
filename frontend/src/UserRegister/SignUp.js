@@ -59,7 +59,7 @@ const FormSignUp = ({closeModal}) => {
         })
         .then(function (response) {
           console.log(response);
-          setCookie('id', "989a50a9-8cd4-44b3-8361-7211b0ab7c0c", { path: '/' });
+          setCookie('id', response.data.id, { path: '/' });
           closeModal();
         })
         .catch(function (error) {

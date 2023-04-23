@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "2X/RSI3Qz7SdUNP43/TNn3EJN/jj6Zs5XNnsMRyhMMAla11jpXznUe3Qg5c1Yfr0ze/vVr8WuirtMtWT2hFTOg==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\source\\repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj",
-=======
-  "dgSpecHash": "ys05fb4qzeyie8F4VuRVakHFSoggyhE0hdLq0DM80cHDZ+zs38SW06lapaPT+KhWSzSOpIugJxtJ4ZTsA8B+Vw==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\devor\\source\\repos\\ITkariera_CarRental\\API\\CarRentalAPI\\CarRentalAPI.csproj",
->>>>>>> c8b59d92ae15d8d6375b7bc0fe46be611f6c4be6
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -67,5 +61,12 @@
     "C:\\Users\\PC\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\PC\\source\\repos\\ITkariera_CarRental\\API\\CarRentalAPI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

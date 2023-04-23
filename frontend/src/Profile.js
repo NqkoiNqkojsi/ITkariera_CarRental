@@ -1,36 +1,192 @@
 import React from 'react';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
-class Profile extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = { dir:"", isActive:false};
+import axios from 'axios';
+import { useCookies } from 'react-cookie';
+import { margin } from '@mui/system';
+
+
+
+const Profile = ({}) => {
+  const [Admin, setAdmin] = React.useState(false);
+  const getCookie=(key)=> {
+    let b = document.cookie.match("(^|;)\\s*" + key + "\\s*=\\s*([^;]+)");
+    return b;
+  }
+  const isAdmin=()=>{
+    let id=getCookie("id");
+    axios.post('https://localhost:7146/api/Account/IsAdmin', {
+        id:id
+      },{
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+        setAdmin(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("there has been an error! Try again");
+    });
   }
 
-
-  updateDir(dir){
-    this.setState({ dir:dir });
-    this.setState({isActive:true});
-  }
-
-  GetCanvas(){
-    if(this.state.isActive){
+  const displayStuff=()=>{
+    if(isAdmin){
       return(
-        <div></div>
+        <form onSubmit={formik.handleSubmit}>
+        <TextField
+            fullWidth
+            id="lastName"
+            name="lastName"
+            label="Last Name"
+            value={formik.values.lastName}
+            onChange={formik.handleChange}
+            sx={{margin:'10px'}}
+          />
+        <TextField
+            fullWidth
+            id="lastName"
+            name="lastName"
+            label="Last Name"
+            value={formik.values.lastName}
+            onChange={formik.handleChange}
+            sx={{margin:'10px'}}
+          />
+        <Button color="primary" variant="contained" fullWidth type="submit" sx={{margin:'10px'}}>
+          Submit
+        </Button>
+      </form>
       );
     }else{
-      return(
-        //<Scene dir={this.state.dir}></Scene>
-        <div></div>
-      );
+      return(<p>ne si admin</p>);
     }
   }
 
-  render(){
-    return (
-      <div></div>
+  const formik = useFormik({
+    initialValues: {
+      brand: '',
+      model: '',
+      type: '',
+      price: '',
+      imgDir: '',
+      description: '',
+      numberOfSeats: 4,
+      year: 2000,
+    },
+    onSubmit: (values) => {
+      axios.post('https://localhost:7146/api/Car/Create', {
+        brand: values.brand,
+        model: values.model,
+        type: values.type,
+        price: values.price,
+        imgDir: values.imgDir,
+        description: values.description,
+        numberOfSeats: values.numberOfSeats,
+        year: values.year,
+      },{
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(function (response) {
+        console.log(response);
         
-    );
-  }
-}
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("there has been an error! Try again");
+      });
+    },
+  });
+
+
+  return (
+    <div>
+      <form onSubmit={formik.handleSubmit}>
+        <TextField
+            fullWidth
+            id="brand"
+            name="brand"
+            label="brand"
+            value={formik.values.brand}
+            onChange={formik.handleChange}
+            sx={{margin:'10px'}}
+          />
+        <TextField
+            fullWidth
+            id="model"
+            name="model"
+            label="model"
+            value={formik.values.model}
+            onChange={formik.handleChange}
+            sx={{margin:'10px'}}
+          />
+          <TextField
+            fullWidth
+            id="type"
+            name="type"
+            label="type"
+            value={formik.values.type}
+            onChange={formik.handleChange}
+            sx={{margin:'10px'}}
+          />
+          <TextField
+            fullWidth
+            id="description"
+            name="description"
+            label="description"
+            value={formik.values.description}
+            onChange={formik.handleChange}
+            sx={{margin:'10px'}}
+          />
+          <TextField
+            fullWidth
+            id="price"
+            name="price"
+            label="price"
+            value={formik.values.price}
+            onChange={formik.handleChange}
+            sx={{margin:'10px'}}
+          />
+          <TextField
+            fullWidth
+            id="imgDir"
+            name="imgDir"
+            label="imgDir"
+            value={formik.values.imgDir}
+            onChange={formik.handleChange}
+            sx={{margin:'10px'}}
+          />
+          <TextField
+            fullWidth
+            id="year"
+            name="year"
+            label="year"
+            value={formik.values.year}
+            onChange={formik.handleChange}
+            sx={{margin:'10px'}}
+          />
+          <TextField
+            fullWidth
+            id="numberOfSeats"
+            name="numberOfSeats"
+            label="numberOfSeats"
+            value={formik.values.numberOfSeats}
+            onChange={formik.handleChange}
+            sx={{margin:'10px'}}
+          />
+        <Button color="primary" variant="contained" fullWidth type="submit" sx={{margin:'10px'}}>
+          Submit
+        </Button>
+      </form>
+    </div>
+  );
+};
+
 
 export default Profile;

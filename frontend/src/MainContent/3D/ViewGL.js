@@ -17,16 +17,13 @@ class ViewGL{
 	}
 
 	init=(canvasRef, dir)=> {
-
-		const container = document.getElementById("three");
-
-		camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
-		camera.position.set( - 1.8, 0.6, 2.7 );
+		camera = new THREE.PerspectiveCamera( 45, (window.innerWidth-550) / window.innerHeight, 0.25, 20 );
+		camera.position.set( - 4, 5, 2.7 );
 
 		scene = new THREE.Scene();
 		renderer = new THREE.WebGLRenderer( { antialias: true , canvas: canvasRef,} );
 		renderer.setPixelRatio( window.devicePixelRatio );
-		renderer.setSize( window.innerWidth, window.innerHeight );
+		renderer.setSize( window.innerWidth-550, window.innerHeight );
 		renderer.toneMapping = THREE.ACESFilmicToneMapping;
 		renderer.toneMappingExposure = 1;
 		renderer.outputEncoding = THREE.sRGBEncoding;
@@ -48,7 +45,7 @@ class ViewGL{
 
 				scene.add( gltf.scene );
 
-				this.render();
+				//this.render();
 
 				} );
 
@@ -58,12 +55,13 @@ class ViewGL{
 
 		const controls = new OrbitControls( camera, renderer.domElement );
 		controls.addEventListener( 'change', this.render ); // use if there is no animation loop
-		controls.minDistance = 2;
-		controls.maxDistance = 10;
+		controls.minDistance = 3;
+		controls.maxDistance = 20;
 		controls.target.set( 0, 0, - 0.2 );
 		controls.update();
 
 		window.addEventListener( 'resize', this.onWindowResize );
+		this.render();
 
 	}
 
