@@ -32,7 +32,6 @@ class InfoMenu extends React.Component{
 
     rentCar=()=>{
         let userID=this.getCookie('id');
-        console.log(this.props.car.id);
         if(userID==null){
             return(
             <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
@@ -45,15 +44,16 @@ class InfoMenu extends React.Component{
             axios.post('https://localhost:7146/api/Car/CreateQuery', {
             from: this.props.day1,
             to: this.props.day2,
-            userID:userID,
-            carID:this.props.car.id
+            carID:this.props.car.id,
+            userID:userID[2]
             },{
             headers: {
                 'Content-Type': 'application/json'
             }
             })
-            .then(function (response) {
+            .then((response)=> {
                 console.log(response);
+                this.props.close()
             })
             .catch(function (error) {
                 //console.log(this.props.day1);

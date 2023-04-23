@@ -39,11 +39,12 @@ const FormLogIn = ({closeModal}) => {
         })
         .then(function (response) {
           console.log(response);
-          setCookie('id', "1", { path: '/' });
+          setCookie('id', "989a50a9-8cd4-44b3-8361-7211b0ab7c0c", { path: '/' });
           closeModal();
         })
         .catch(function (error) {
           console.log(error);
+          alert("there has been an error! Try again");
         });
       },
     });

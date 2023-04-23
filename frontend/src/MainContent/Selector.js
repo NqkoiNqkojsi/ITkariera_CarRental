@@ -17,17 +17,13 @@ import axios from 'axios';
 class SelectionMenu extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { value1: dayjs(), value2: dayjs(), daysCount:1, isSelectedCar:false, selectedCar:null, cars:[]};
+        this.state = { value1: dayjs(), value2: dayjs(), daysCount:1, validDays:true, isSelectedCar:false, selectedCar:null, cars:[]};
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
     }
 
-    componentDidMount() {
-        axios.get(`https://localhost:7146/api/Car/GetAll`)
-          .then(res => {
-            this.setState({ cars:res.data.value });
-          });
-          this.getAvailableCars();
+    componentDidMount=()=> {
+        this.getAvailableCars();
     }
 
     getAvailableCars=()=>{
@@ -39,8 +35,9 @@ class SelectionMenu extends React.Component{
                 'Content-Type': 'application/json'
             }
         })
-        .then(function (response) {
+        .then((response)=>{
             console.log(response);
+            this.setState({ cars:response.data.value });
         })
         .catch(function (error) {
             console.log(error);
@@ -48,13 +45,14 @@ class SelectionMenu extends React.Component{
     }
 
     openObject(car){
+        this.props.getDir(car.imgDir)
         this.setState({ selectedCar:car });
         this.setState({isSelectedCar:true});
-        this.props.getDir(car.imgDir);
     }
 
     closeObject(){
         this.setState({isSelectedCar:false});
+        this.getAvailableCars();
     }
 
     SecondPart(){
@@ -103,7 +101,12 @@ class SelectionMenu extends React.Component{
                         </LocalizationProvider>
                         <Grid item xs={1} sx={{marginTop: 2, marginLeft:4, marginRight:0 }}>
                             <Typography variant="subtitle1" component="div">
-                                Sum Days:{this.state.daysCount}
+                                Sum Days: {this.state.daysCount}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={1} sx={{marginTop: 2, marginLeft:4, marginRight:0 }}>
+                            <Typography variant="subtitle1" component="div">
+                                Legit: {this.state.validDays.toString()}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -118,24 +121,24 @@ class SelectionMenu extends React.Component{
     }
 
     handleChange1(e) {
-        this.setState({ daysCount:Math.abs(e.diff(this.state.value2, 'days'))+1});
-        this.setState({ value1: dayjs(e) });
-        console.log(this.state.value1);
-        if(e.isAfter(this.state.value2)){
-            
+        if(e.diff(this.state.value2, 'days')<=0 && e.diff(dayjs(), 'days')>=0){
+            this.setState({ daysCount:Math.abs(e.diff(this.state.value2, 'days'))+1});
+            this.setState({ value1: dayjs(e) });
+            this.setState({validDays:true});
+            this.getAvailableCars();
         }else{
-
+            this.setState({validDays:false});
         }
     }
 
     handleChange2(e) {
-        this.setState({ daysCount:Math.abs(e.diff(this.state.value1, 'days'))+1});
-        this.setState({ value2: dayjs(e) });
-        console.log(this.state.value1);
-        if(e.isBefore(this.state.value1)){
-            
+        if(e.diff(this.state.value1, 'days')>=0 && e.diff(dayjs(), 'days')>=0){
+            this.setState({ daysCount:Math.abs(e.diff(this.state.value1, 'days'))+1});
+            this.setState({ value2: dayjs(e) });
+            this.setState({validDays:true});
+            this.getAvailableCars();
         }else{
-            
+            this.setState({validDays:false});
         }
     }
 }

@@ -1,9 +1,11 @@
 import React from 'react';
 import ViewGL from './ViewGL';
 
+
 class Scene extends React.Component {
 
     // ******************* COMPONENT LIFECYCLE ******************* //
+    /*
     componentDidMount() {
         // Get canvas, pass to custom class
         //const canvas = this.canvasRef.current;
@@ -34,11 +36,11 @@ class Scene extends React.Component {
     handleResize = () => {
         this.viewGL.onWindowResize(window.innerWidth, window.innerHeight);
     };
-
+    */
     render() {
         return (
             <div id="threeCont" className="canvasContainer">
-                
+                <ViewGL dir={this.props.dir}></ViewGL>
             </div>
         );
     }

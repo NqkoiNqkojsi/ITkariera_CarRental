@@ -15,19 +15,20 @@ class Content extends React.Component{
 
 
   updateDir(dir){
+    console.log(dir);
     this.setState({ dir:dir });
     this.setState({isActive:true});
   }
 
   GetCanvas(){
-    if(this.state.isActive){
+    console.log("isActive="+this.state.isActive.toString());
+    if(!this.state.isActive){
       return(
         <Typography>Test Test</Typography>
       );
     }else{
       return(
-        //<Scene dir={this.state.dir}></Scene>
-        <Typography>Test Test</Typography>
+        <Scene dir={this.state.dir}></Scene>
       );
     }
   }
