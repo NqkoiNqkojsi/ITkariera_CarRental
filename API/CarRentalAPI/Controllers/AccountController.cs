@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using CarRentalAPI.Data;
 using CarRentalAPI.Migrations;
 using CarRentalAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using SQLitePCL;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -18,14 +20,16 @@ namespace CarRentalAPI.Controllers
         private readonly UserManager<ApiUser> _userManager;
         private readonly ILogger<AccountController> _logger;
         private readonly IMapper _mapper;
+        private readonly ApiDbContext _dbContext;
 
         public AccountController(UserManager<ApiUser> userManager,
             ILogger<AccountController> logger,
-            IMapper mapper)
+            IMapper mapper, ApiDbContext dbContext)
         {
             _userManager = userManager;
             _logger = logger;
             _mapper = mapper;
+            _dbContext = dbContext;
 
         }
 
@@ -115,7 +119,25 @@ namespace CarRentalAPI.Controllers
             return Ok(new { Id = user.Id });
         }
 
+        [HttpPost]
+        [Route("IsAdmin")]
+        public async Task<IActionResult> IsAdmin(string id)
+        {
+            var user = _dbContext.Users.Where(u => u.Id == id).FirstOrDefault();
+            if (user == null)
+            {
+                return BadRequest("Invalid username or password.");
+            }
+            var role = _dbContext.UserRoles.Where(r => r.UserId == user.Id).FirstOrDefault();
+            if(role== null)
+            {
+                return BadRequest("User lacks role");
+            }
+            if (role.RoleId == "fbc0c8d0-a3e1-4dd0-9fa0-c9ff5a100e29") return Ok(true);
+            return Ok(false);
 
+
+        }
 
 
     }
