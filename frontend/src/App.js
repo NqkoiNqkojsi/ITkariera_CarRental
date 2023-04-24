@@ -8,7 +8,7 @@ import Content from './MainContent/Content';
 class App extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { dir:"", isActive:false, app:'content'};
+    this.state = { dir:"", isActive:false, app:'home'};
   }
 
   changeApp(app){
@@ -17,6 +17,7 @@ class App extends React.Component{
   }
 
   displayApp(){
+    console.log(this.state.app);
     if(this.state.app==='home'){
       return(<Home sx={{height:'95'}}></Home>);
     }else if(this.state.app==='profile'){
