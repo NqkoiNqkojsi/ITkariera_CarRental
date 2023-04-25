@@ -4,6 +4,7 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import '../../Styles/Animations.scss';
 import '../../Styles/Info.css';
+import '../../Styles/Colors.css';
 import CustomDay from '../Calendar'
 import CarCard from './CarCard'
 import { DateField } from '@mui/x-date-pickers/DateField';
@@ -64,6 +65,7 @@ class InfoMenu extends React.Component{
 
     render(){
         return (
+            <dvi className='surface1 carContainer'>
             <figure className="product-card">
                 <div className='containerImg'>
                     <img className="product-card-img" src={"/models/"+this.props.car.imgDir+"/thumbnail.jpg"} alt={this.props.car.model}/>
@@ -73,7 +75,7 @@ class InfoMenu extends React.Component{
                     <h1 className="product-card-title">{this.props.car.brand} {this.props.car.model}</h1>
                     <Grid container spacing={2} columns={10}>
                         <Grid item xs={5}>
-                            <h3>Year: {this.props.car.year}</h3>
+                            <h2 className='product-card-year'>Year: {this.props.car.year}</h2>
                             <h3 className="product-card-address">
                                 Space: {this.props.car.numberOfSeats}
                             </h3>
@@ -89,6 +91,7 @@ class InfoMenu extends React.Component{
                     </Grid>
                 </figcaption>
             </figure>
+            </dvi>
         );
     }
 

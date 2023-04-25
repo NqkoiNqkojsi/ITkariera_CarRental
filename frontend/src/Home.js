@@ -9,7 +9,7 @@ class Home extends React.Component{
       <div style={{overflow:'scroll', boxSizing:'border-box', position:'relative'}}>
         <section class="showcase">
           <div class="video-container">
-            <video src="" autoplay muted loop></video>
+            <video src="CarsMid3.mp4" controls muted autoPlay={"autoplay"} preLoad="auto" loop></video>
           </div>
           <div class="content">
             <h1>Pico Rentals</h1>
