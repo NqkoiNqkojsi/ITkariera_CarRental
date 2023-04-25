@@ -9,13 +9,13 @@
   /* End-of-ignore-styles */
   
   .product-card {
-    width: 100%;
-    margin-right: 20px;
-    margin-left: 45px;
-    margin-top: 20px;
-    margin-bottom:50px ;
-    font-size: 12px;
-    font-family: 'Roboto';
+        /* width: 100%; */
+      margin-right: 20px;
+      margin-left: 20px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      font-size: 12px;
+      font-family: 'Roboto';
   }
   
   .product-card > a {
@@ -39,19 +39,25 @@
   }
   
   .product-card .product-card-address {
-    color: #888;
+    color: #80867b;
     line-height: 1.2;
+    margin: 3px;
   }
   
   .product-card .product-card-address i {
-      font-size: 14px;
-      margin-right: 2px;
+    font-size: 14px;
+    margin-right: 2px;
     line-height: 1.2;
+    margin: 3px;
+  }
+  .product-card .product-card-year {
+    margin: 3px;
   } 
   
   .product-card .product-card-price {
     display: block;
     text-align: right;
+    margin: 3px;
   }
   
   .product-card  .price-savings,
@@ -64,23 +70,28 @@
   
   .product-card .price-savings {
     float: left;
-    color: green;
-    color: #82b548;
+    color: #51773f;
+    margin: 3px;
+    font-size: 16px;
+    margin-bottom: 7px;
   }
   
   .product-card .original-price {
     color: #aaa;
-    font-size: 14px;
+    font-size: 16px;
+    margin: 3px;
   }
   
   .product-card .amount-price {
     text-align: right;
-    font-size: 20px;
-    color: #82b548;
+    font-size: 28px;
+    color: #386a20;
+    margin: 3px;
   }
   
   .product-card .from {
     font-size: 12px;
+    margin: 3px;
   }
 
   .button-wrapper .swiper-prev-button {
@@ -106,10 +117,11 @@
 }
 
 button.ghost {
+    margin-top: 8px;
     border-radius: 20px;
-    border: 1px solid #FF4B2B;
-    background-color: #FF4B2B;
-    color: #FFFFFF;
+    border: 1px solid #1a1a1a;
+    background-color: #ff8864;
+    color: #1a1a1a;
     font-size: 12px;
     font-weight: bold;
     padding: 12px 45px;
@@ -126,7 +138,7 @@ button.ghost {
 
   
   .previous {
-    background-color: #f1f1f1;
+    background-color: #d9e7cb;
     color: black;
     position: absolute;
     top: 2%;
@@ -139,7 +151,7 @@ button.ghost {
   }
 
   .previous:hover {
-    background-color: #ddd;
+    background-color: rgb(189, 207, 171);
     color: black;
   }
   .round {
@@ -153,4 +165,12 @@ button.ghost {
 
   .containerImg {
     position: relative;
+  }
+
+
+  .carContainer{
+    border-radius: 10px;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-right: 15px;
   }

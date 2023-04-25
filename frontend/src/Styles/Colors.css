@@ -1,0 +1,68 @@
+mio-root {
+    --mio-theme-color-on-surface-variant-2: linear-gradient(0deg,rgba(67,73,62,.08),rgba(67,73,62,.08));
+    --mio-theme-color-on-surface-variant-4: linear-gradient(0deg,rgba(67,73,62,.12),rgba(67,73,62,.12));
+    --mio-theme-color-on-surface-2: linear-gradient(0deg,rgba(26,28,24,.08),rgba(26,28,24,.08)),var(--mio-theme-color-secondary-container);
+    --mio-theme-color-on-surface-4: linear-gradient(0deg,rgba(26,28,24,.12),rgba(26,28,24,.12)),var(--mio-theme-color-secondary-container);
+    --mio-theme-color-white: #fff;
+    --mio-theme-color-on-background: #1a1c18;
+    --mio-theme-color-background: #fdfdf6;
+    --mio-theme-color-on-surface: #1a1c18;
+    --mio-theme-color-on-surface-variant: #43493e;
+    --mio-theme-color-surface-0: #fdfdf6;
+    --mio-theme-color-surface-variant: #dfe4d6;
+    --mio-theme-color-inverse-surface: #2f312c;
+    --mio-theme-color-inverse-on-surface: #f1f1ea;
+    --mio-theme-color-primary: #386a20;
+    --mio-theme-color-primary-80: #9cd67d;
+    --mio-theme-color-primary-30: #205107;
+    --mio-theme-color-primary-20: #0c3900;
+    --mio-theme-color-on-primary: #fff;
+    --mio-theme-color-primary-container: #b8f397;
+    --mio-theme-color-on-primary-container: #042100;
+    --mio-theme-color-secondary: #55624c;
+    --mio-theme-color-on-secondary: #fff;
+    --mio-theme-color-secondary-container: #d9e7cb;
+    --mio-theme-color-on-secondary-container: #131f0d;
+    --mio-theme-color-tertiary-container: #bbebeb;
+    --mio-theme-color-on-tertiary-container: #002021;
+    --mio-theme-color-utility-error: #ba1b1b;
+    --mio-theme-color-utility-on-error: #fff;
+    --mio-theme-color-utility-outline: #74796e;
+    --mio-theme-color-surface-1: #f0f3e8;
+    --mio-theme-color-surface-2: #ebefe2;
+    --mio-theme-color-surface-3: #e5eadc;
+    --mio-theme-color-surface-4: #e3e9da;
+    --mio-theme-color-surface-5: #dfe6d5;
+    --mio-theme-color-ref-secondary-200: #bdcbb0;
+    --mio-theme-color-ref-secondary-300: #a1b095;
+    --mio-theme-color-ref-neutral-100: #e3e3e3;
+    --mio-theme-color-ref-neutral-200: #c7c7c7;
+}
+.surface1{
+   background-color: #f0f3e8;
+   color:#042100;
+   border-color: #042100;
+}
+.surface2{
+    background-color: #ebefe2;
+    color:#131f0d;
+    border-color: #131f0d;
+ }
+ .secondary{
+    background-color:#d9e7cb;
+    color:#131f0d;
+    border-color: #131f0d;
+ }
+ .primary{
+    background-color: #386a20;
+    color:#fff;
+    border-color:#fff;
+ }
+ .background{
+    background-color: #fdfdf6;
+    color:#1a1c18;
+ }
+ .error{
+    color: #ba1b1b;
+    border-color: #ba1b1b;
+ }

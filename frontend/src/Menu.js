@@ -11,11 +11,15 @@ import HomeIcon from '@mui/icons-material/Home';
 import DateIcon from '@mui/icons-material/CalendarMonth';
 import CarIcon from '@mui/icons-material/DirectionsCar';
 import UserModal from './UserRegister/RegisterModal';
+import { ThemeProvider } from '@mui/material/styles';
+import './Styles/Colors.css';
+import theme from './Styles/Theme';
 
 function DenseAppBar({changeApp}) {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <ThemeProvider theme={theme}>
+    <Box sx={{  flexGrow: 1}} >
+      <AppBar position="static" color='surface2'>
         <Toolbar variant="dense">
         <Grid container spacing={2} columns={24}>
             <Grid item xs={1}>
@@ -35,6 +39,7 @@ function DenseAppBar({changeApp}) {
         </Toolbar>
       </AppBar>
     </Box>
+    </ThemeProvider>
   );
 }
 export default React.memo(DenseAppBar);

@@ -5,6 +5,7 @@ import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import '../Styles/Animations.scss';
 import '../Styles/Selector.css';
+import '../Styles/Colors.css';
 import CustomDay from './Calendar'
 import InfoMenu from './Cars/CarInfo';
 import CarCard from './Cars/CarCard'

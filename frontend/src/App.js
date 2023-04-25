@@ -5,6 +5,8 @@ import Home from './Home';
 import Profile from './Profile';
 import Content from './MainContent/Content';
 
+import './Styles/Colors.css';
+
 class App extends React.Component{
   constructor(props) {
     super(props);
@@ -29,10 +31,10 @@ class App extends React.Component{
 
   render(){
     return (
-      <Stack spacing={0} sx={{height:'100%'}}>
-        <ResponsiveAppBar changeApp={(x)=>this.changeApp(x)} sx={{height:'5%'}}></ResponsiveAppBar>
-        {this.displayApp()}
-      </Stack>
+        <Stack spacing={0} sx={{height:'100%', color:'#1a1c18', backgroundColor:'#fdfdf6'}}>
+          <ResponsiveAppBar changeApp={(x)=>this.changeApp(x)} sx={{height:'5%'}}></ResponsiveAppBar>
+          {this.displayApp()}
+        </Stack>
         
     );
   }

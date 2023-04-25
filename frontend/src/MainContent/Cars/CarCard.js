@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
+import theme from '../../Styles/Theme';
 
 const Img = styled('img')({
   margin: 'auto',
@@ -26,8 +27,9 @@ class CarCard extends React.Component{
                     margin: 'auto',
                     maxWidth: 500,
                     flexGrow: 1,
-                    backgroundColor: (theme) =>
-                    theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+                    backgroundColor: '#f0f3e8',
+                    color: '#042100',
+                    borderColor:'#042100'
                 }}
                 >
                 <Grid container spacing={2}>
