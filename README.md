@@ -1,65 +1,34 @@
-# Internship
+# Pico Car Rentals
 <h3>Dependecies</h3>
-Project for AdataPro Internship</br>
-First start Virtual Environment and then install:</br>
-<pre>pip install scrapy</pre>
-<pre>pip install peewee</pre>
-<pre>pip install scrapy_jsonschema</pre>
-<pre>pip install django</pre>
-<pre>pip install classla</pre>
-<pre>npm install react-router-dom@6</pre>
-<pre>npm install axios</pre>
-<pre>npm install bootstrap@4.6.0 reactstrap@8.9.0 --legacy-peer-deps</pre>
-<pre>npx create-react-app frontend</pre>
-<pre>pip install django_filter</pre>
-<pre>pip install djangorestframework</pre>
-<pre>pip install djangorestframework django-cors-headers</pre>
+Проект за ИТ Кариера с задача да бъде платформа за наем на автомобили</br>
+Отворете Visual Studio и стартирайте API/CarRentalApi.sln:</br>
+Отделно отворете папката frontend в предпочитано IDE след като е изтеглено Node.js</br>
+<pre>npm install</pre>
+<pre>npm start</pre>
 </br>
 
-<h3>To start The Crawler</h3>
-To run the spiders generating the databases:</br>
-<pre>python GovScraper/start.py</pre>
-This code will run 2 spiders:</br>
-First to generate the urls for all the articles in a links.db</br>
-Second to generate articles.db with all the necessary information from the articles</br>
-
-<h3>To start The NLP Process</h3>
-<pre>python NLP/main.py</pre>
-This code will get all of the name enteties in every article and put them in articles.db</br>
-
-<h3>Set up the deployment environment</h3>
-<h5>AWS</h5>
-First, go to https://aws.amazon.com/ and create a free-tier account.
-Then, choose the EC2 service.
-After that, you have to pick on what OS the server will run. Choose Debian-11.
-Then you get the option to configure the specs of the server through the 'instance-type'. We chose t2-micro.
-<h5>SSH Access</h5>
-To configure the SSH access to the cloud we used PuTTY. It can be downloaded from https://www.putty.org/.
-From here on we have to configure the PuTTY with the .pem key we get from AWS.
-<h5>Installing packages</h5>
-You can install the packages you need with debian commands through the shell.
-</br>
-
-<h3>To start The Django site</h3>
-<pre>cd internshipProj</pre>
-<pre>python manage.py runserver</pre>
-Lastly, go to http://127.0.0.1:8000/.</br>
-
-<h2>Tour around the site</h2>
-You will be greated by the index page.</br></br>
+<h2>Тур на сайта</h2>
+Сайта се отваря с начална страница с видео за фон и about част.</br></br>
 <p>
-    <img src="Assets/index.PNG"/>
+    <img src="Imgs/Home1.png"/>
+    <img src="Imgs/Home2.png"/>
 </p></br>
-From there click on the articles link in the navbar to be able to select from every article present on the goverment site.</br></br>
+Функционалната част на проекта представлява меню за избиране на свободни автомобили в указан прериод за наем.</br></br>
 <p>
-    <img src="Assets/AllArticles.PNG"/>
+    <img src="Imgs/Dates1.png"/>
+    <img src="Imgs/Dates2.png"/>
+    <img src="Imgs/Dates3.png"/>
 </p></br>
-They are sorted by date and reach back to around 2017 with about 2300 articles present. Clicking on a row will lead you to that article's page.</br></br>
+След като е избран автомобил се отваря  компонент с повече информация за него и с възмоността да се запази./br></br>
 <p>
-    <img src="Assets/articleShow.PNG"/>
+    <img src="Imgs/Car1.png"/>
 </p></br>
-The field is split in two. On the first side we can see the article with the title, image and body with all of the entities highlighted. And on the second is a table with the entities sorted by occurences in the article. Clicking on a row here, will lead us to the the page of the specified entity.</br></br>
+В главния компонент се показва 3D модел на избрания автомобил, което е главната отличаваща черта (има проблеми: трябва първо да се размърда черния екран за да се покаже модела; след като е показан модел не може да се смени без да се рестартира уеб страницата).</br></br>
 <p>
-    <img src="Assets/EntityOverv.PNG"/>
+    <img src="Imgs/Car2.png"/>
+    <img src="Imgs/Car3.png"/>
 </p></br>
-On this page is shown the stats for the word amongst all articles and where it is found. Consequently, you can visit the specified article.</br>
+Функциониращ формуляр за регистриране и влизане в профил, който е нужен за запазване на автомобил./br></br>
+<p>
+    <img src="Imgs/SignIn.png"/>
+</p></br>
