@@ -24,7 +24,7 @@ function DenseAppBar({changeApp}) {
         <Grid container spacing={2} columns={24}>
             <Grid item xs={1}>
                 <Typography variant="h6" color="inherit" component="div">
-                    App
+                    Pico
                 </Typography>
             </Grid>
             <Grid item xs={22} >

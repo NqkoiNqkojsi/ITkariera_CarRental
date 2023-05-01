@@ -1,7 +1,7 @@
-$defaultDuration: .3s;
+$defaultDuration: .4s;
 $primaryColour: #ececec;
 $secondaryColour: #666;
-$shadowColour: rgba(0, 0, 0, .6);
+$shadowColour: rgba(0, 0, 0, .5);
 
 @mixin hideTapHighlightColor() {
 	//Prevent highlight colour when element is tapped

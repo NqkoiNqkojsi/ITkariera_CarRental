@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import FormLogIn from './LogIn.js';
 import FormSignUp from './SignUp.js';
+import { borderRadius } from '@mui/system';
 
 
 const style = {
@@ -21,6 +22,7 @@ const style = {
   width: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
+  borderRadius:'10px',
   boxShadow: 12,
   p: 4,
 };
