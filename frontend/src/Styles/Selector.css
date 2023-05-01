@@ -1,6 +1,7 @@
 .cardCar{
-	width: auto;
-	margin-left: 10px;
+	width: 500px;
+	margin-left: 25px;
 	margin-right: 5px;
     cursor: pointer;
+	border-radius: 5px;
 }
